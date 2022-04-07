@@ -1,0 +1,48 @@
+{% extends 'home/base.html' %}
+{% load static %}
+
+{% block content %}
+
+{% if status %} 
+
+  {% if status == 'success' %}
+    <div class="alert alert-success">
+      <strong>Success!!</strong>
+    </div>
+  {% else %}
+    <div class="alert alert-warning">
+      <strong>Failed!!</strong>
+    </div>
+  {% endif %}
+
+{% endif %}
+
+<div class="container">
+  <form method="POST">
+
+    <div class="form-group"> 
+      {% csrf_token %}
+
+      <label for="title"> title </label>
+      <input class="form-control" type="text" name="title" id="title">
+    </div><br>
+
+    <div class="form-group"> 
+      <label for="email"> email </label>
+      <input class="form-control" type="text" name="email" id="email">
+    </div><br>
+
+    <div class="form-group"> 
+      <label for="comment"> comment </label>
+      <textarea class="form-control" rows="4" name="comment" id="comment"></textarea>
+    </div>
+
+    <br>
+    <button type="submit" class="btn btn-primary">submit</button>
+    <br>
+    
+    <br>
+  </form>
+</div>
+
+{% endblock content %}
